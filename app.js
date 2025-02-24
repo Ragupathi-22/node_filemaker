@@ -18,19 +18,19 @@ myEmitter.on('log', (message, logName) => { logEvents(message, logName) });
 const server = http.createServer((req, res) => {
     myEmitter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt');
 
-    // ✅ Handle CORS Headers for all requests
+    //  Handle CORS Headers for all requests
     res.setHeader('Access-Control-Allow-Origin', '*');  
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');  
 
-    // ✅ Handle OPTIONS preflight request properly
+    // Handle OPTIONS preflight request properly
     if (req.method === 'OPTIONS') {
         res.writeHead(204); 
         res.end();
         return;
     }
 
-    // ✅ Pass request to actual routes
+    // Pass request to actual routes
     filemakerRouter(req, res);
 });
 
