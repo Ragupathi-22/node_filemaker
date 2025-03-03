@@ -19,7 +19,8 @@ const server = http.createServer((req, res) => {
     myEmitter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt');
 
     //  Handle CORS Headers for all requests
-    res.setHeader('Access-Control-Allow-Origin', '*,http://cwptraining.ntplstaging.com');  
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "http://cwptraining.ntplstaging.com");    
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');  
 
